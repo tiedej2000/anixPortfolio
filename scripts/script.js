@@ -24,5 +24,18 @@ function showTime(){
     
 }
 
+function activeSelection(){
+    const listItems = document.querySelectorAll('.item')
+
+    listItems.forEach(item =>{
+        item.addEventListener('click', () =>{
+            listItems.forEach(allItems => {allItems.classList.remove('active')})
+
+            item.classList.add('active')
+        })
+    })
+}
+
+activeSelection()
 showDate()
 setInterval(showTime,1000)

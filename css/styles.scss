@@ -5,6 +5,7 @@
     --white: white;
     --black: black;
     --bg: #F0F0F0;
+    --deep-blue: #0158D0;
 }
 
 *{
@@ -30,6 +31,8 @@ li {
 
 
 .main__container{
+    display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
     background-color: var(--bg);
@@ -43,6 +46,7 @@ nav{
     height: 30px;
     font-size: clamp(0.6rem, 0.9vw, 1.2rem);
     padding: 0 10px;
+    margin-bottom: 10px;
 
     ul{
         display: flex;
@@ -66,5 +70,107 @@ nav{
 
     #time{
         width: 50px;
+    }
+}
+
+.canvas{
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+
+    .finder{
+        display: flex;
+        flex-direction: column;
+
+        .navigation{
+            width: 600px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            background-color: var(--light-grey);
+            border-radius: 10px 10px 0 0;
+
+            ul{
+                display: flex;
+                gap: 5px;
+                
+                li{
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .content{
+            width: 600px;
+            height: 650px;
+            background-color: var(--darg-grey);
+            border-radius: 0 0 10px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .tags{
+                display: flex;
+                color: var(--white);
+                font-size: 0.7rem;
+                width: 100%;
+                padding: 10px 10px 10px 50px;
+                border-bottom: 1px solid var(--light-grey);
+                margin-bottom: 30px;
+                width: 95%;
+            }
+
+            .title{
+                width: 300px;
+            }
+
+            .size{
+                width: 75px;
+            }
+
+            .art{
+                width: 75px;
+            }
+
+            .added{
+                width: 75px;
+            }
+
+            .item{
+                display: flex;
+                color: var(--white);
+                font-size: 0.7rem;
+                padding: 10px 10px 10px 50px;
+                width: 95%;
+                border-radius: 5px;
+                cursor: pointer;
+                position: relative;
+                align-items: center;
+
+                li:first-child{
+                    position: absolute;
+                    left: 30px;
+                }
+
+                img{
+                    width: 15px;
+                    height: 15px;
+                }
+            }
+
+            .light{
+                background-color: var(--light-grey);
+            }
+
+            .active{
+                background-color: var(--deep-blue);
+            }
+
+        }
+
+
     }
 }
