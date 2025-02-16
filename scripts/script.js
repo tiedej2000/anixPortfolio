@@ -21,6 +21,7 @@ function showTime(){
     currentSeconds = d.getSeconds().toString().padStart(2,0)
 
     time.textContent = `${currentHours}:${currentMinutes}:${currentSeconds}`
+
     
 }
 
@@ -38,4 +39,5 @@ function activeSelection(){
 
 activeSelection()
 showDate()
+showTime()
 setInterval(showTime,1000)

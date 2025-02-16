@@ -12,13 +12,16 @@
   margin: 0;
   padding: 0;
   line-height: 1;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "SF Pro Display";
+  src: url("../media/SF-Pro-Display-Regular.ttf");
+}
 html {
   scroll-behavior: smooth;
-  font-family: "Poppins", serif;
+  font-family: "SF Pro Display", serif;
 }
 
 a {
@@ -31,13 +34,8 @@ li {
 }
 
 .main__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   width: 100vw;
   height: 100vh;
   background-color: var(--bg);
@@ -45,118 +43,77 @@ li {
 }
 
 nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: space-between;
+  align-items: center;
   height: 30px;
-  font-size: clamp(0.6rem, 0.9vw, 1.2rem);
+  font-size: clamp(0.6rem, 0.8vw, 1.2rem);
   padding: 0 10px;
   margin-bottom: 10px;
 }
-
 nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 20px;
 }
-
 nav ul li {
   cursor: pointer;
 }
-
 nav ul li img {
-  height: 15px;
+  height: 17px;
   width: auto;
 }
-
 nav .symbols {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 15px;
   margin-right: 20px;
 }
-
 nav #time {
   width: 50px;
+  margin-right: 10px;
 }
 
 .canvas {
   width: 100%;
   height: 100%;
   padding: 20px;
-}
-
-.canvas .finder {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  gap: 50px;
+  color: var(--white);
 }
-
+.canvas .finder {
+  display: flex;
+  flex-direction: column;
+}
 .canvas .finder .navigation {
   width: 600px;
   height: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   padding: 0 10px;
   background-color: var(--light-grey);
   border-radius: 10px 10px 0 0;
 }
-
 .canvas .finder .navigation ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 5px;
 }
-
 .canvas .finder .navigation ul li {
   width: 10px;
   height: 10px;
   border-radius: 50%;
 }
-
 .canvas .finder .content {
   width: 600px;
-  height: 650px;
+  height: 85vh;
   background-color: var(--darg-grey);
   border-radius: 0 0 10px 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
 }
-
 .canvas .finder .content .tags {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   color: var(--white);
   font-size: 0.7rem;
@@ -166,26 +123,19 @@ nav #time {
   margin-bottom: 30px;
   width: 95%;
 }
-
 .canvas .finder .content .title {
   width: 300px;
 }
-
 .canvas .finder .content .size {
   width: 75px;
 }
-
 .canvas .finder .content .art {
   width: 75px;
 }
-
 .canvas .finder .content .added {
   width: 75px;
 }
-
 .canvas .finder .content .item {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   color: var(--white);
   font-size: 0.7rem;
@@ -194,26 +144,104 @@ nav #time {
   border-radius: 5px;
   cursor: pointer;
   position: relative;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .canvas .finder .content .item li:first-child {
   position: absolute;
   left: 30px;
 }
-
 .canvas .finder .content .item img {
   width: 15px;
   height: 15px;
 }
-
 .canvas .finder .content .light {
   background-color: var(--light-grey);
 }
-
 .canvas .finder .content .active {
   background-color: var(--deep-blue);
 }
-/*# sourceMappingURL=styles.css.map */
+.canvas .info__viewer {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+}
+.canvas .info__viewer .viewer {
+  background-color: var(--darg-grey);
+  height: 60vh;
+  width: 600px;
+  border-radius: 10px;
+}
+.canvas .info__viewer .viewer .navigation {
+  width: 600px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background-color: var(--light-grey);
+  border-radius: 10px 10px 0 0;
+}
+.canvas .info__viewer .viewer .navigation ul {
+  display: flex;
+  gap: 5px;
+}
+.canvas .info__viewer .viewer .navigation ul li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.canvas .info__viewer .viewer .image__display {
+  height: 500px;
+  width: 500px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.canvas .info__viewer .viewer .image__display img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: 10px;
+}
+.canvas .info__viewer .info {
+  background-color: var(--darg-grey);
+  height: 23vh;
+  border-radius: 10px;
+}
+.canvas .info__viewer .info .navigation {
+  width: 600px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background-color: var(--light-grey);
+  border-radius: 10px 10px 0 0;
+  position: relative;
+}
+.canvas .info__viewer .info .navigation .dots {
+  display: flex;
+  gap: 5px;
+}
+.canvas .info__viewer .info .navigation .dots li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.canvas .info__viewer .info .navigation .header {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--very-light-grey);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.canvas .info__viewer .info .navigation .header img {
+  height: 15px;
+  width: auto;
+}
+.canvas .info__viewer .info .text__content {
+  padding: 10px;
+  font-size: clamp(0.4rem, 0.7vw, 1rem);
+}/*# sourceMappingURL=styles.css.map */
