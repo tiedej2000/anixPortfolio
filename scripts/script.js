@@ -1,5 +1,6 @@
 function showDate() {
     const date = document.getElementById('date')
+    const dateLogin = document.querySelector('.date')
 
     const d = new Date()
 
@@ -9,10 +10,12 @@ function showDate() {
 
 
     date.textContent = `${currentDay}. ${currentDate}. ${currentMonth}.`
+    dateLogin.textContent = `${currentDay}, ${currentDate}. ${currentMonth}`
 }
 
 function showTime(){
     const time = document.getElementById('time')
+    const timeLogin = document.querySelector('.time')
 
     const d = new Date()
 
@@ -21,8 +24,8 @@ function showTime(){
     currentSeconds = d.getSeconds().toString().padStart(2,0)
 
     time.textContent = `${currentHours}:${currentMinutes}:${currentSeconds}`
+    timeLogin.textContent = `${currentHours}:${currentMinutes}`
 
-    
 }
 
 function activeSelection(){
@@ -66,3 +69,22 @@ function displayImage() {
         displayArea.src = imageSrc
     }
 }
+
+
+function clearLogin(){
+    const loginScreen = document.querySelector('.login__screen')
+    const usernameInput = document.querySelector('.username')
+    const guestLogin = document.querySelector('.guest_login')
+
+    usernameInput.addEventListener('keydown', (event) =>{
+        if(event.key === 'Enter'){
+            loginScreen.classList.add('hidden')
+        }
+    })
+
+    guestLogin.addEventListener('click', ()=>{
+        loginScreen.classList.add('hidden')
+    })
+}
+
+clearLogin()
