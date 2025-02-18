@@ -33,6 +33,7 @@ function activeSelection(){
             listItems.forEach(allItems => {allItems.classList.remove('active')})
 
             item.classList.add('active')
+            displayImage()
         })
     })
 }
@@ -41,3 +42,27 @@ activeSelection()
 showDate()
 showTime()
 setInterval(showTime,1000)
+
+const imageSet = {
+    strafe: [
+        {id:1, image: './media/strafe.png'}
+    ],
+
+    strafe_transparent: [
+        {id: 1, image: './media/strafe_transparent.png'}
+    ]
+}
+
+
+function displayImage() {
+    const activeItem = document.querySelector('.item.active')
+
+    const itemAttribute = activeItem.getAttribute('item')
+
+    if(imageSet[itemAttribute]){
+        const imageSrc = imageSet[itemAttribute][0].image
+
+        const displayArea = document.querySelector('.image__display img')
+        displayArea.src = imageSrc
+    }
+}
