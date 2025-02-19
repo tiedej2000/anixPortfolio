@@ -1,3 +1,5 @@
+let user = getUser()
+
 function showDate() {
     const date = document.getElementById('date')
     const dateLogin = document.querySelector('.date')
@@ -95,17 +97,15 @@ function displayOSInformation(){
     const d = new Date()
     const date = d.toString().slice(0,24)
 
+    const currUser = localStorage.getItem('user');
+
     if(imageSet[itemAttribute]){
         const osInfo = document.querySelector('.os__content')
 
-        osInfo.innerHTML = 'Last login: ' + date + ' on ttys00 <br>' + getUser() +
-        '@Air-von-Justin ~ % <br><br>'
+        osInfo.innerHTML = 'Last login: ' + date + ' on ttys00 <br>' + currUser +
+        '@Air-von-' + currUser + ' ~ % <br><br>'
     }
 }
-displayOSInformation()
-displayImageInformation()
-
-let user = 'guest'
 
 function clearLogin(){
     const loginScreen = document.querySelector('.login__screen')
@@ -114,7 +114,6 @@ function clearLogin(){
 
     const savedUser = localStorage.getItem('user');
     if (savedUser) {
-        // If a user is set, hide the login screen
         loginScreen.classList.add('hidden');
         console.log('User already logged in:', savedUser);
     }
@@ -125,6 +124,7 @@ function clearLogin(){
             user = getUser()
             localStorage.setItem('user', user);
             console.log('user:', user)
+            displayOSInformation()
         }
     })
 
@@ -151,8 +151,13 @@ function switchUser(){
         localStorage.removeItem('user');
         user = 'guest'
         console.log('removed user. current user:',user)
+        setTimeout(() => {
+            displayOSInformation();
+        }, 1000);
     })
 }
 
 clearLogin()
 switchUser()
+displayOSInformation()
+displayImageInformation()
