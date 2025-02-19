@@ -37,6 +37,7 @@ function activeSelection(){
 
             item.classList.add('active')
             displayImage()
+            displayImageInformation()
         })
     })
 }
@@ -48,7 +49,7 @@ setInterval(showTime,1000)
 
 const imageSet = {
     strafe: [
-        {id:1, image: './media/strafe.png'}
+        {id:1, image: './media/strafe.png', created: 'created: 12.07.25 <br>', used: 'used: AI and PS'}
     ],
 
     strafe_transparent: [
@@ -70,15 +71,60 @@ function displayImage() {
     }
 }
 
+function displayImageInformation(){
+    const activeItem = document.querySelector('.item.active')
+
+    const itemAttribute = activeItem.getAttribute('item')
+
+    if(imageSet[itemAttribute]){
+        const textSrc = imageSet[itemAttribute][0].created
+        const textSrc2 = imageSet[itemAttribute][0].used
+
+        const displayTextArea = document.querySelector('.image__content')
+
+        displayTextArea.innerHTML = textSrc + textSrc2
+
+    }
+}
+
+function displayOSInformation(){
+    const activeItem = document.querySelector('.item.active')
+
+    const itemAttribute = activeItem.getAttribute('item')
+
+    const d = new Date()
+    const date = d.toString().slice(0,24)
+
+    if(imageSet[itemAttribute]){
+        const osInfo = document.querySelector('.os__content')
+
+        osInfo.innerHTML = 'Last login: ' + date + ' on ttys00 <br>' + getUser() +
+        '@Air-von-Justin ~ % <br><br>'
+    }
+}
+displayOSInformation()
+displayImageInformation()
+
+let user = 'guest'
 
 function clearLogin(){
     const loginScreen = document.querySelector('.login__screen')
-    const usernameInput = document.querySelector('.username')
+    const username = document.querySelector('.username')
     const guestLogin = document.querySelector('.guest_login')
 
-    usernameInput.addEventListener('keydown', (event) =>{
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+        // If a user is set, hide the login screen
+        loginScreen.classList.add('hidden');
+        console.log('User already logged in:', savedUser);
+    }
+
+    username.addEventListener('keydown', (event) =>{
         if(event.key === 'Enter'){
             loginScreen.classList.add('hidden')
+            user = getUser()
+            localStorage.setItem('user', user);
+            console.log('user:', user)
         }
     })
 
@@ -87,4 +133,26 @@ function clearLogin(){
     })
 }
 
+function getUser(){
+    const usernameInput = document.querySelector('.username input')
+    if(usernameInput.value !== ''){
+        return usernameInput.value
+    } else{
+        return 'guest'
+    }
+}
+
+function switchUser(){
+    const logOutButton = document.getElementById('userswitch')
+    const loginScreen = document.querySelector('.login__screen')
+
+    logOutButton.addEventListener('click',()=>{
+        loginScreen.classList.remove('hidden');
+        localStorage.removeItem('user');
+        user = 'guest'
+        console.log('removed user. current user:',user)
+    })
+}
+
 clearLogin()
+switchUser()
