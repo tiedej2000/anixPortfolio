@@ -50,6 +50,9 @@ showTime()
 setInterval(showTime,1000)
 
 const imageSet = {
+    folder: [
+        {id:1, image: './media/folder.png'}
+    ],
     strafe: [
         {id:1, image: './media/strafe.png', created: 'created: 12.07.25 <br>', used: 'used: AI and PS'}
     ],
@@ -157,6 +160,31 @@ function switchUser(){
     })
 }
 
+function folderFunction (){
+    const folder = document.querySelector('.item[item="folder"]')
+    const folderContent = document.querySelector('.folder__content')
+    const folderCaret = document.querySelector('.folder_button img')
+
+    folder.addEventListener('dblclick',()=>{
+        toggleFolder()
+    })
+
+    folderCaret.addEventListener('click', ()=>{
+        toggleFolder()
+    })
+
+    function toggleFolder(){
+        folderContent.classList.toggle('hide_folder')
+
+        if(folderContent.classList.contains('hide_folder')){
+            folderCaret.src = '../media/caret-right.svg';
+        } else{
+            folderCaret.src = '../media/caret-down.svg';
+        }
+    }
+}
+
+folderFunction()
 clearLogin()
 switchUser()
 displayOSInformation()

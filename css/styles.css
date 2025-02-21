@@ -246,30 +246,60 @@ nav #time {
 .canvas .finder .content .added {
   width: 75px;
 }
+.canvas .finder .content .image {
+  width: 20px;
+}
 .canvas .finder .content .item {
   display: flex;
   color: var(--white);
   font-size: 0.7rem;
-  padding: 10px 10px 10px 50px;
+  padding: 10px 10px 10px 30px;
   width: 95%;
   border-radius: 5px;
   cursor: pointer;
   position: relative;
   align-items: center;
-}
-.canvas .finder .content .item li:first-child {
-  position: absolute;
-  left: 30px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .canvas .finder .content .item img {
   width: 15px;
   height: 15px;
+}
+.canvas .finder .content .item .folder_button {
+  position: absolute;
+  left: 15px;
+}
+.canvas .finder .content .item .folder_button img {
+  width: 8px;
+  height: 8px;
 }
 .canvas .finder .content .light {
   background-color: var(--light-grey);
 }
 .canvas .finder .content .active {
   background-color: var(--deep-blue);
+}
+.canvas .finder .content .folder__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  opacity: 1;
+  max-height: 70px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.canvas .finder .content .folder__content .item .image {
+  padding-left: 20px;
+}
+.canvas .finder .content .folder__content .item .title {
+  padding-left: 20px;
+}
+.canvas .finder .content .hide_folder {
+  max-height: 0;
 }
 .canvas .info__viewer {
   display: flex;
