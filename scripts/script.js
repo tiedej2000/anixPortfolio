@@ -57,9 +57,38 @@ const imageSet = {
         {id:1, image: './media/strafe.png', created: 'created: 12.07.25 <br>', used: 'used: AI and PS'}
     ],
 
-    strafe_transparent: [
-        {id: 1, image: './media/strafe_transparent.png'}
-    ]
+    archive1: [
+        {id:1, image: './media/archives1.png'}
+    ],
+
+    archive2: [
+        {id:1, image: './media/archives2.png'}
+    ],
+
+    cyanide1: [
+        {id:1, image: './media/cyanide1.png'}
+    ],
+
+    deads1: [
+        {id:1, image: './media/deads1.png'}
+    ],
+
+    disaster1: [
+        {id:1, image: './media/disaster2.png'}
+    ],
+
+    disaster2: [
+        {id:1, image: './media/disaster3.png'}
+    ],
+
+    disaster3: [
+        {id:1, image: './media/disaster.png'}
+    ],
+
+    disaster4: [
+        {id:1, image: './media/disaster4.png'}
+    ],
+
 }
 
 
@@ -160,29 +189,35 @@ function switchUser(){
     })
 }
 
-function folderFunction (){
-    const folder = document.querySelector('.item[item="folder"]')
-    const folderContent = document.querySelector('.folder__content')
-    const folderCaret = document.querySelector('.folder_button img')
+function folderFunction() {
+    const folders = document.querySelectorAll('.item[item="folder"]');
 
-    folder.addEventListener('dblclick',()=>{
-        toggleFolder()
-    })
+    folders.forEach(folder => {
+        const folderContent = folder.nextElementSibling;
+        const folderCaret = folder.querySelector('.folder_button img');
 
-    folderCaret.addEventListener('click', ()=>{
-        toggleFolder()
-    })
+        folder.addEventListener('dblclick', () => {
+            toggleFolder(folderContent, folderCaret);
+        });
 
-    function toggleFolder(){
-        folderContent.classList.toggle('hide_folder')
+        folder.querySelector('.folder_button').addEventListener('click', () => {
+            toggleFolder(folderContent, folderCaret);
+        });
+    });
 
-        if(folderContent.classList.contains('hide_folder')){
-            folderCaret.src = '../media/caret-right.svg';
-        } else{
-            folderCaret.src = '../media/caret-down.svg';
+    function toggleFolder(content, caret) {
+        if (content) {
+            content.classList.toggle('hide_folder');
+
+            if (content.classList.contains('hide_folder')) {
+                caret.src = './media/caret-right.svg';
+            } else {
+                caret.src = './media/caret-down.svg';
+            }
         }
     }
 }
+
 
 folderFunction()
 clearLogin()
